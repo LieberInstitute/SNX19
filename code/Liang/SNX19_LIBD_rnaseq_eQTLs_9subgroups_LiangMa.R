@@ -2,7 +2,7 @@
 ##########################
 #Author: Liang Ma, Qiang Chen
 #SNX19
-#calculating 9 groups
+#SNX19_LIBD_rnaseq_eQTLs_9subgroups
 ##########################
 
 library(MatrixEQTL)

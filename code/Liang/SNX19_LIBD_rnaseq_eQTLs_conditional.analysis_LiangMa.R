@@ -2,7 +2,7 @@
 ##########################
 #Author: Liang Ma, Qiang Chen
 #SNX19
-#conditional analysis for junc8.10 and junc8.8a
+#SNX19_LIBD_rnaseq_eQTLs_conditional.analysis for junc8.10 and junc8.8a
 ##########################
 
 library(MatrixEQTL)
