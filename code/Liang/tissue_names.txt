@@ -1,0 +1,13 @@
+Brain - Frontal Cortex (BA9)
+Brain - Cerebellar Hemisphere
+Brain - Hippocampus
+Brain - Substantia nigra
+Brain - Anterior cingulate cortex (BA24)
+Brain - Amygdala
+Brain - Caudate (basal ganglia)
+Brain - Nucleus accumbens (basal ganglia)
+Brain - Putamen (basal ganglia)
+Brain - Cerebellum
+Brain - Hypothalamus
+Brain - Spinal cord (cervical c-1)
+Brain - Cortex
