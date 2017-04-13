@@ -8,7 +8,7 @@ alleles = strsplit(table$observed, "/", fixed=T)
 allele1 = allele2 = c()
 for (i in 1:length(alleles)){allele1[i] = alleles[[i]][2]}
 for (i in 1:length(alleles)){allele2[i] = alleles[[i]][1]}
-pos = table$chromEnd
+pos = table$snpPos
 chr = 'chr11'
 offset = 10
 
@@ -16,7 +16,7 @@ RefSeq = paste0(">Extended_Hap_", table$name,"\n",
                 getSeq(Hsapiens,chr,pos-offset,pos-1),
                 allele1,
                 getSeq(Hsapiens,chr,pos+1,pos+offset))
-AltSeq = paste0(">Extended_Hap_",table$Set,"_", table$updated_SNP,"\n",
+AltSeq = paste0(">Extended_Hap_",table$name,"\n",
                 getSeq(Hsapiens,chr,pos-offset,pos-1),
                 allele2,
                 getSeq(Hsapiens,chr,pos+1,pos+offset))
