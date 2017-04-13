@@ -1,0 +1,16 @@
+Extended_Hap_rs10750446	-1.29476
+Extended_Hap_rs10894265	-1.25241
+Extended_Hap_rs10894266	-0.95527
+Extended_Hap_rs10894267	-1.62743
+Extended_Hap_rs10894267	-1.62743
+Extended_Hap_rs11222346	-1.49871
+Extended_Hap_rs7943757	-0.149569
+Extended_Hap_rs10894268	-1.1411
+Extended_Hap_rs4366492	-2.0375
+Extended_Hap_rs1944142	-0.975838
+Extended_Hap_rs6590512	-0.69672
+Extended_Hap_rs34529622	-2.5051
+Extended_Hap_rs10791097	-1.05974
+Extended_Hap_rs10791098	-1.39594
+Extended_Hap_rs10791099	-2.647
+Extended_Hap_rs10750450	-nan
