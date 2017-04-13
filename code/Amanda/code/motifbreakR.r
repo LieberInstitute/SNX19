@@ -3,17 +3,20 @@ library(BSgenome)
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(SNPlocs.Hsapiens.dbSNP142.GRCh37)
 library(MotifDb)
+library("readxl")
 
 snps = c("rs10791099", "rs1448360", "rs4937582", "rs10750450", "rs10791098")
 snps = c("rs10791097","rs10791098","rs10791099","rs10750450")
 snps = c("rs10894268","rs4366492","rs1944142","rs6590512","rs34529622",
          "rs10791097","rs10791098","rs10791099","rs10750450","rs67215852","rs4601795	rs3831404")
+snps = data.frame(read_excel("./Dropbox/SNX19/code/Amanda/data/gkmpredict_extended_hap_results.xlsx"))
+snps = unique(snps$SNP)
 
 # load in SNPs
-setwd("/dcl01/lieber/ajaffe/Amanda/ATAC/SNX19/")
+setwd("/dcl01/lieber/ajaffe/SNX19/")
 snps.mb = snps.from.rsid(rsid = snps,
                           dbSNP = SNPlocs.Hsapiens.dbSNP142.GRCh37,
-                          search.genome = BSgenome.Hsapiens.UCSC.hg19)
+                          search.genome = BSgenome.Hsapiens.UCSC.hg19) # excludes indels rs34529622, rs67215852, rs78968418, rs3831404
 # find broken motifs
 data(motifbreakR_motif)
 motifbreakR_motif
@@ -37,7 +40,23 @@ results_homer <- motifbreakR(snpList = snps.mb, filterp = TRUE,
                              threshold = 1e-3,
                              method = "ic",
                              bkg = c(A=0.25, C=0.25, G=0.25, T=0.25) )
-save(results_encode,results_hocomoco,results_factorbook,results_homer,file="./motifbreakR/results.0.001.rda")
+save(results_encode,results_hocomoco,results_factorbook,results_homer,
+     file="./Dropbox/SNX19/code/Amanda/data/motifbreakR_extended_hap_results.0.001.nopval.rda")
+
+# make table of results
+res_hocomoco <- as.data.frame(mcols(results_hocomoco))
+res_hocomoco$SNP <- names(results_hocomoco)
+res_factorbook <- as.data.frame(mcols(results_factorbook))
+res_factorbook$SNP <- names(results_factorbook)
+res_homer <- as.data.frame(mcols(results_homer))
+res_homer$SNP <- names(results_homer)
+res_encode <- as.data.frame(mcols(results_encode))
+res_encode$SNP <- names(results_encode)
+all_res <- rbind(res_hocomoco,res_encode,res_factorbook, res_homer)
+all_res <- all_res[,c(ncol(all_res),1:(ncol(all_res)-1) )]
+write.csv(all_res, file = "./Dropbox/SNX19/code/Amanda/data/motifbreakR_extended_hap_results.0.001.nopval.csv", 
+          row.names=FALSE)
+
 
 # Calculate P Values
 results_homer = calculatePvalue(results_homer)
